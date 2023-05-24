@@ -11,7 +11,7 @@ public class StudentWed6{
     
     public static void main(String[] args){
         
-        Student[] students = new Student[2];
+        Student[] students = new Student[2];  //This defines an array
         
         Scanner input = new Scanner(System.in);
         

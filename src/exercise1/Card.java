@@ -1,5 +1,5 @@
 package exercise1;
-
+import java.util.*;
 /**
  * A class that models playing card Objects. Cards have 
  * a value (note that Ace = 1, Jack = 11, Queen = 12, King = 13)
@@ -7,41 +7,61 @@ package exercise1;
  * There are 52 cards in a deck, no jokers.
  * This code is to be used in ICE1. When you create your own branch,
  * add your name as a modifier.
- * @author Mehrdad Iravani
- * @author dancye
- * @author Paul Bonenfant 
+ * @author Suhrad Trambadiya
+ 
  */
 public class Card {
 
-   private String suit; //clubs, spades, diamonds, hearts
-   private int value;//1-13
+   
+   public static final String[] SUITS = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    private int value;
+    private String suit;
 
-   public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
-    /**
-     * @return the suit
-     */
-    public String getSuit() {
-        return suit;
+    public Card() {
+        this.value = 0;
+        this.suit = "";
     }
 
-    /**
-     * @param suit the suit to set
-     */
-    public void setSuit(String suit) {
+    public Card(int value, String suit) {
+        this.value = value;
         this.suit = suit;
     }
 
-    /**
-     * @return the value
-     */
     public int getValue() {
         return value;
     }
 
-    /**
-     * @param value the value to set
-     */
     public void setValue(int value) {
         this.value = value;
-    }  
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Card card = (Card) obj;
+        return value == card.value && suit.equals(card.suit);
+    }
+    
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(13) + 1; // Random number from 1 to 13
+    }
+
+    public static int generateRandomNumber(int upperBound) {
+        Random random = new Random();
+        return random.nextInt(upperBound);
+    }
 }
